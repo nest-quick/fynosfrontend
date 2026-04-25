@@ -1,11 +1,60 @@
-<nav class="navbar">
-  <div class="logo">
-    <a routerLink="/">FYNOS</a>
+<nav class="navbar border-bottom bg-danger px-2 px-md-4">
+  <div class="container-fluid position-relative nav-shell">
+    <!-- HAMBURGER -->
+    <button 
+    class="border-0 shadow-none d-lg-none"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#mobileNav"
+    aria-controls="mobileNav"
+    aria-label="Toggle Navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- LOGO -->
+    <a class="fw-bold nav-link" routerLink="/">
+      FYNOS
+    </a>
+
+    <!--DESKTOP NAV LINKS -->
+    <div class="d-none d-lg-flex align-items-center gap-4">
+      <a class="nav-link" routerLink="/products">All</a>
+      <a class="nav-link" routerLink="/products" [queryParams]="{gender: 'men'}">Men</a>
+      <a class="nav-link" routerLink="/products" [queryParams]="{gender: 'women'}">Women</a>
+      <a class="nav-link" routerLink="/gallery">Gallery</a>
+    </div>
+
+    <!-- CART -->
+     <a>
+      <span class="cart-icon">CART</span>
+      <span class="cart-count ms-1">0</span>
+     </a>
   </div>
-  <ul class="nav-links">
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/shop">Shop</a></li>
-    <li><a routerLink="/about">About</a></li>
-    <li><a routerLink="/contact">Contact</a></li>
-  </ul>
 </nav>
+
+<!--Mobile Offcanvas -->
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="mobileNav"
+  aria-labelledby="mobileNavLabel">
+  <div class="offcanvas-header">
+    <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="offcanvas"
+    aria-label="Close"
+    >
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-flex flex-column gap-3">
+      <a class="nav-link" routerLink="/products" data-bs-dismiss="offcanvas">All</a>
+      <a class="nav-link" routerLink="/products" data-bs-dismiss="offcanvas" [queryParams]="{gender: 'men'}">Men</a>
+      <a class="nav-link" routerLink="/products" data-bs-dismiss="offcanvas" [queryParams]="{gender: 'women'}">Women</a>
+      <a class="nav-link" routerLink="/gallery" data-bs-dismiss="offcanvas">Gallery</a>
+    </div>
+  </div>
+</div>
+

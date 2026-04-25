@@ -1,0 +1,14 @@
+<section class="products-page">
+  <h1>Products</h1>
+
+  <p *ngIf="loading">Loading products...</p>
+  <p *ngIf="error">{{ error }}</p>
+
+  <div class="products-list justify-content-center" *ngIf="!loading && !error">
+    <div class="product-card" *ngFor="let product of products">
+      <img [src]="product.productImage" [alt]="product.name" class="product-image"/>
+      <h3>{{ product.name }}</h3>
+      <p><strong>${{ product.price }}</strong></p>
+    </div>
+  </div>
+</section>
