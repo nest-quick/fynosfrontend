@@ -1,0 +1,29 @@
+<section class="vh-100 login-bg">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <form class="text-center p-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <h1 class="mb-5">FYNOS</h1>
+                    <div class="form-group mb-4">
+                        <input type="email" class="form-control" formControlName="email" placeholder="Email">
+                        <small class="text-danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+                            Enter a valid email.
+                        </small>
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                        <small class="text-danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                            Password is required
+                        </small>
+                    </div>
+                    <div class="text-danger mb-3" *ngIf="error">
+                        {{error}}
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+                        {{ loading ? 'Logging in...' : 'Login' }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

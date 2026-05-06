@@ -1,0 +1,27 @@
+.login-bg {
+  position: relative;
+  background: white;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.login-bg::before {
+  content: "";
+  position: absolute;
+
+  width: clamp(320px, 80vw, 1000px);
+  height: clamp(320px, 80vw, 1000px);
+
+  background: url('/images/FynosOctagon.png') center/contain no-repeat;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 0;
+}
+
+.login-bg .container {
+  position: relative;
+  z-index: 1;
+}
