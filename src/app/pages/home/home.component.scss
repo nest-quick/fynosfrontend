@@ -1,14 +1,44 @@
 .hero-wrapper {
-  padding: 100px 0px 80px;
+  padding: 80px 40px 40px;
   background: white;
 }
 
 .hero {
-  height: calc(100vh - 180px);
+  height: calc(100vh - 120px);
 
   background-image: url('/images/FYNOS_DESKTOP_HERO.png');
   background-size: cover;
   background-position: center;
 
   overflow: hidden;
+}
+
+/* PHONE ONLY */
+@media (max-width: 425.98px) {
+  .hero-wrapper {
+    padding: 90px 0 20px;
+  }
+
+  .hero {
+    height: calc(100vh - 110px);
+
+    background-image: url('/images/FYNOS_MOBILE_HERO.png');
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+/* TABLET / LARGE PHONE */
+@media (min-width: 426px) and (max-width: 768px) {
+  .hero-wrapper {
+    padding: 90px 16px 24px;
+  }
+
+  .hero {
+    height: calc(100vh - 114px);
+
+    background-image: url('/images/FYNOS_DESKTOP_HERO.png');
+    background-size: cover;
+    background-position: center;
+  }
 }
