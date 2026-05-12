@@ -1,4 +1,4 @@
-<nav class="navbar border-bottom bg-danger px-2 px-md-4">
+<nav class="navbar custom-navbar px-2 px-md-4" [class.scrolled]="isScrolled">
   <div class="container-fluid position-relative nav-shell">
     <!-- HAMBURGER -->
     <button 
@@ -13,7 +13,7 @@
     </button>
 
     <!-- LOGO -->
-    <a class="fw-bold nav-link" routerLink="/">
+    <a class="fw-bold nav-link fynos-home" routerLink="/">
       FYNOS
     </a>
 

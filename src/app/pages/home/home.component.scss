@@ -1,34 +1,14 @@
-.hero {
-  text-align: center;
-  margin: 2rem 0;
-
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  button {
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
+.hero-wrapper {
+  padding: 100px 0px 80px;
+  background: white;
 }
 
-.features {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 3rem;
+.hero {
+  height: calc(100vh - 180px);
 
-  .feature {
-    text-align: center;
-    width: 25%;
+  background-image: url('/images/FYNOS_DESKTOP_HERO.png');
+  background-size: cover;
+  background-position: center;
 
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-  }
+  overflow: hidden;
 }
