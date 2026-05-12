@@ -10,6 +10,10 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   const token = authService.getToken();
 
+  console.log('Interceptor ran');
+  console.log('Request URL:', req.url);
+  console.log('Token:', token);
+
   //Attach token only if user is logged in
   if(token) {
     req = req.clone({
@@ -17,6 +21,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         Authorization: `Bearer ${token}`
       }
     });
+
+    console.log('Authorization header added');
   }
 
   return next(req).pipe(

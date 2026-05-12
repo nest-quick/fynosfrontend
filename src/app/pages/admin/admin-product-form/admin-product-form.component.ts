@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminProductService } from '../../../services/admin-product.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-product-form',
-  imports: [],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './admin-product-form.component.html',
   styleUrl: './admin-product-form.component.scss'
 })
@@ -13,19 +15,18 @@ import { AdminProductService } from '../../../services/admin-product.service';
 export class AdminProductFormComponent {
   private fb = inject(FormBuilder);
   private adminProductService = inject(AdminProductService);
-  private route = inject(Router);
+  private router = inject(Router);
 
   loading = false;
   error = '';
-  success = false;
 
   //Product form with fields and validation
   productForm = this.fb.group({
     name: ['', Validators.required],
     description: ['', Validators.required],
-    price: ['', Validators.required, Validators.min(0)],
+    price: ['', [Validators.required, Validators.min(0.01)]],
     gender: ['', Validators.required],
-    productImage: ''
+    productImage: ['/images/muaythaishorts.jpg']
   });
 
 //// onSubmit():
@@ -47,13 +48,24 @@ export class AdminProductFormComponent {
 
     const product = {
       name: this.productForm.value.name!,
-      description: this.productForm.value.description!,
-      price: this.productForm.value.price!,
+      description: this.productForm.value.description || undefined,
+      price: Number(this.productForm.value.price!),
       gender: this.productForm.value.gender!,
-      productImage: this.productForm.value.productImage!
+      productImage: this.productForm.value.productImage || undefined
     };
 
-    this.adminProductService
+    this.adminProductService.createProduct(product).subscribe({
+      next: () => {
+        this.loading = false;
+        this.router.navigate(['/admin']);
+      },
+
+      error: (err) => {
+        console.error('Product Failed:', err);
+        this.error = 'Product not created successfully';
+        this.loading= false;
+      }
+    })
 
   }
 

@@ -41,7 +41,7 @@ export class ProductsComponent implements OnInit {
     ).subscribe({
       //If API call is successful
       next: (data) => {
-        this.products =data;
+        this.products = data;
         this.loading = false;
       },
       //If API call fails

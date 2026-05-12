@@ -6,10 +6,13 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { adminAuthGuard } from './guards/admin-auth.guard';
+import { AdminProductFormComponent } from './pages/admin/admin-product-form/admin-product-form.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
     {
         path: '',
+        component: MainLayoutComponent,
         children: [
             {path: '', component: HomeComponent},
             {path: 'products', component: ProductsComponent}
@@ -27,9 +30,9 @@ export const routes: Routes = [
         component: AdminLayoutComponent,
         canActivateChild: [adminAuthGuard],
         children: [
-            { path: 'admin', component: AdminDashboardComponent }
+            { path: 'admin', component: AdminDashboardComponent },
             // { path: 'products', component: AdminProductsComponent },
-            // { path: 'products/new', component: AdminProductFormComponent }
+            { path: 'admin/products/new', component: AdminProductFormComponent }
         ]
     }
 ];

@@ -1,3 +1,49 @@
 .nav-shell {
   min-height: 64px;
 }
+
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  z-index: 1000;
+
+  background: white;
+
+  transition:
+    background 0.5s ease,
+    backdrop-filter 0.5s ease,
+    border-color 0.5s ease;
+
+  .nav-link,
+  .cart-icon,
+  .cart-count,
+  a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: color 0.3s ease;
+  }
+
+  .navbar-toggler-icon {
+    transition: filter 0.3s ease;
+  }
+}
+
+/* SCROLLED STATE */
+.custom-navbar.scrolled {
+  background: rgba(255, 255, 255, 0.65);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fynos-home {
+  color: red !important;
+}
